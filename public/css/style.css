@@ -13,7 +13,7 @@
 /* PRESETS */
     html {
         font-size: 62.5%;
-        background: darkgray;
+        background: var(--clr-dark);
     }
     body {
         font-size: 1.5rem;
@@ -74,10 +74,27 @@
     }
 
 /* BODY CONTAINER */
-    /* .body-container {
-        width: 100%;
-
-    } */
+    .body-container {
+        position: relative;
+        margin: var(--spc-lg);
+        padding: var(--spc-lg);
+    }
+    .body-container::after{
+        content: '';
+        width: 80%;
+        max-width: 700px;
+        height: calc(100% - (var(--spc-lg) * 3) - var(--fs-counter));
+        background: rgba(255, 255, 255, .75);
+        border: 1rem solid var(--clr-accent);
+        border-radius: 5rem;
+        position: absolute;
+        top: calc(var(--fs-counter) + var(--spc-lg));
+        /* bottom: calc(var(--spc-lg) + 3%); */
+        
+        z-index: -2;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
 /* HEADER CONTAINER */
     header {
@@ -91,39 +108,36 @@
     h1 {
         position: relative;
         display: inline-block;
-        background: #fff;
+        background: var(--clr-light);
         padding: var(--spc-xs);
-        
     }
     /* add ribbon */
     h1::before,
     h1::after {
+
         content: '';
-        width: var(--spc-lg);
-        height: 100%;
-        background-color: var(--clr-ribbon-light);
         position: absolute;
-        z-index: -1;
-        top: var(--spc-sm);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 25% 50%);
-        background-image: linear-gradient(45deg, transparent 50%, var(--clr-ribbon-dark) 50%);
-        background-size: var(--spc-sm) var(--spc-sm);
-        background-repeat: no-repeat;
-        background-position: bottom right;
+        top: 0;
+        height: 100%;
+        width: var(--spc-xs);
+        background: linear-gradient(-135deg, var(--clr-light) 8px, transparent 0) 0 8px, linear-gradient(320deg, var(--clr-light) 5px, transparent 0);
+        background-position: left bottom;
+        background-repeat: repeat-y;
+        background-size: var(--spc-xs) var(--spc-xs);
     }
     h1::before {
-        left: -3rem;
-      }
-      
-      h1::after {
-        right: -3rem;
-        transform: scaleX(-1); /* flip horizontally */
-      }
+        transform: translateX(calc(-100% - var(--spc-xs)));
+    }      
+    h1::after {
+        right: calc(0px - var(--spc-xs));
+        transform: rotate(180deg) 
+    } 
     
     /* stopwatch icon */
     .heading-icon {
         font-size: var(--fs-counter);
     }
+
 
 /* MAIN CONTAINER */
     main {
@@ -132,17 +146,6 @@
         margin-top: var(--spc-xl);
         font-size: var(--fs-body);
         color: var(--clr-dark);
-    }
-    main::after{
-        content: '';
-        width: 80%;
-        height: 500px;
-        background: darkolivegreen;
-        position: absolute;
-        top: -8rem;
-        z-index: -2;
-        left: 50%;
-        transform: translateX(-50%);
     }
 
     /* img container for top, middle, and bottom section of timer character */
