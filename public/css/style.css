@@ -1,9 +1,28 @@
-/* RESET */
+/* FONTS */
+    @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+
+/* RESETS */
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
+
+
+/* PRESETS */
+    html {
+        font-size: 62.5%;
+        background: darkgray;
+    }
+    body {
+        font-size: 1.5rem;
+        font-family: var(--ff-main);
+    }
+    img {
+        display: block; /* remove gap between div containers */
+    }
+
 
 /* CUSTOM PROPERTIES */
     :root {
@@ -17,48 +36,78 @@
         --avo-mid-right: 170;   /* ---- sub-section: width */
         --avo-mid-bottom: 135;  /* bottom section: height */
 
-        /* img div height */
+        /* img container height */
         --height-top: calc(var(--avo-top) / var(--avo-height) * 100%);
         --height-mid: calc(var(--avo-mid) / var(--avo-height) * 100%);
         --height-bottom: calc(var(--avo-bottom) / var(--avo-height) * 100%);
 
-        /* mid section - width */
+        /* middle img container width */
+        --width-mid-left: calc(var(--avo-mid-left) / var(--avo-width) * 100%);
+        --width-mid-mid: calc(var(--avo-mid-mid) / var(--avo-width) * 100%);
+        --width-mid-right: calc(var(--avo-mid-right) / var(--avo-width) * 100%);
+
+        /* spacing */
+        --spc-md: 3rem;
+        --spc-lg: 5rem;
+
+        /* font family */
+        --ff-main: 'Josefin Sans', sans-serif;
     }
 
-img {
-    display: block;
-}
 
+/* HEADER CONTAINER */
+    header {
+        margin-top: var(--spc-md);
+    }
 
-.timer-img-container {
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-}
+    h1 {
+        text-align: center;
+    }
 
-.timer-img-mid,
-.timer-img-bottom {
-    margin-top: -1px;
-}
+/* MAIN CONTAINER */
+    main {
+        width: 100vw;
+        margin-top: var(--spc-lg);
+    }
 
-.timer-img-top {
-    height: var(--height-top);
-}
-.timer-img-mid {
-    display: flex;
-    height: var(--height-mid);
-}
+    /* img container for top, middle, and bottom section of timer character */
+    .timer-img-container {
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+    }
 
-.timer-img-mid-left {
-    width: calc(105/600 * 100%);
-}
-.timer-img-mid-mid {
-    width: calc(325/600 * 100%);
-}
-.timer-img-mid-right {
-    width: calc(170/600 * 100%);
-}
+    /* remove 1px gap between divs when viewport is an odd number and can't be divided equally */
+    .timer-img-mid,
+    .timer-img-bottom {
+        margin-top: -1px;
+    }
 
-.timer-img-bottom {
-    height: var(--height-bottom);
-}
+    /* top img div */
+    .timer-img-top {
+        height: var(--height-top);
+    }
+    /* middle img div */
+    .timer-img-mid {
+        display: flex;
+        height: var(--height-mid);
+    }
+
+    /* middle img div - left section */
+    .timer-img-mid-left {
+        width: var(--width-mid-left);
+    }
+    /* middle img div - middle section / timer display */
+    .timer-img-mid-mid {
+        width: var(--width-mid-mid);
+    }
+    /* middle img div - right section */
+    .timer-img-mid-right {
+        width: var(--width-mid-right);
+    }
+
+    /* bottom img div */
+    .timer-img-bottom {
+        height: var(--height-bottom);
+    }
