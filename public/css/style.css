@@ -13,7 +13,7 @@
 /* PRESETS */
     html {
         font-size: 62.5%;
-        background: var(--clr-dark);
+        background-image: url('../img/bubble-bg.svg');
     }
     body {
         font-size: 1.5rem;
@@ -85,7 +85,7 @@
         max-width: 700px;
         height: calc(100% - (var(--spc-lg) * 3) - var(--fs-counter));
         background: rgba(255, 255, 255, .75);
-        border: 1rem solid var(--clr-accent);
+        border: 5px dashed var(--clr-accent);
         border-radius: 5rem;
         position: absolute;
         top: calc(var(--fs-counter) + var(--spc-lg));
