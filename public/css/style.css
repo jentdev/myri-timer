@@ -46,8 +46,14 @@
         --width-mid-right: calc(var(--avo-mid-right) / var(--avo-width) * 100%);
 
         /* spacing */
+        --spc-xs: 1rem;
+        --spc-sm: 2rem;
         --spc-md: 3rem;
         --spc-lg: 5rem;
+        --spc-xl: 7rem;
+
+        /* button width */
+        --btn-width: 16rem;
 
         /* font family */
         --ff-body: sans-serif;
@@ -55,33 +61,88 @@
         --ff-timer: 'Kanit', sans-serif;
 
         /* font size */
-        --fs-h1: 4rem;
+        --fs-h1: 2rem;
         --fs-body: 1.5rem;
-        --fs-counter: 9rem;
+        --fs-counter: 8rem;
 
         /* colors */
         --clr-light: #E8E8E8;
         --clr-dark: #212121;
+        --clr-accent: #A3511A;
+        --clr-ribbon-light: rgb(204, 204, 204);
+        --clr-ribbon-dark: rgb(158, 172, 161);
     }
 
+/* BODY CONTAINER */
+    /* .body-container {
+        width: 100%;
+
+    } */
 
 /* HEADER CONTAINER */
     header {
         margin-top: var(--spc-md);
         font-family: var(--ff-heading);
         font-size: var(--fs-h1);
+        color: var(--clr-accent);
+        text-align: center;
     }
 
     h1 {
-        text-align: center;
+        position: relative;
+        display: inline-block;
+        background: #fff;
+        padding: var(--spc-xs);
+        
+    }
+    /* add ribbon */
+    h1::before,
+    h1::after {
+        content: '';
+        width: var(--spc-lg);
+        height: 100%;
+        background-color: var(--clr-ribbon-light);
+        position: absolute;
+        z-index: -1;
+        top: var(--spc-sm);
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 25% 50%);
+        background-image: linear-gradient(45deg, transparent 50%, var(--clr-ribbon-dark) 50%);
+        background-size: var(--spc-sm) var(--spc-sm);
+        background-repeat: no-repeat;
+        background-position: bottom right;
+    }
+    h1::before {
+        left: -3rem;
+      }
+      
+      h1::after {
+        right: -3rem;
+        transform: scaleX(-1); /* flip horizontally */
+      }
+    
+    /* stopwatch icon */
+    .heading-icon {
+        font-size: var(--fs-counter);
     }
 
 /* MAIN CONTAINER */
     main {
+        position: relative;
         max-width: 100vw;
-        margin-top: var(--spc-lg);
+        margin-top: var(--spc-xl);
         font-size: var(--fs-body);
         color: var(--clr-dark);
+    }
+    main::after{
+        content: '';
+        width: 80%;
+        height: 500px;
+        background: darkolivegreen;
+        position: absolute;
+        top: -8rem;
+        z-index: -2;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     /* img container for top, middle, and bottom section of timer character */
@@ -138,7 +199,6 @@
     .timer-display {
         max-height: 0;
         font-size: var(--fs-counter);
-
     }
 
     /* timer control container */
@@ -146,9 +206,13 @@
         margin-top: var(--spc-md);
         display: flex;
         justify-content: center;
+        gap: var(--spc-sm);
     }
     .timer-control-container button {
-        
+        width: var(--btn-width);
+        border: 5px solid var(--clr-accent);
+        border-radius: var(--fs-h1);
+        cursor: pointer;
     }
     .timer-control-container span {
         font-size: var(--fs-counter);
