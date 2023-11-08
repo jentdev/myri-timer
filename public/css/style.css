@@ -13,7 +13,10 @@
 /* PRESETS */
     html {
         font-size: 62.5%;
-
+        background: var(--clr-dark);
+        background-image: url('../img/bubble-bg.svg');
+        background-size: 25%;
+        background-attachment: fixed;
     }
     body {
         font-size: 1.5rem;
@@ -85,7 +88,7 @@
         width: 80%;
         max-width: 700px;
         height: calc(100% - (var(--spc-lg) * 3) - var(--fs-counter));
-        background: rgba(255, 255, 255, .75);
+        /* background: rgba(255, 255, 255, 1); */
         border: 5px dashed var(--clr-light);
         border-radius: 5rem;
         position: absolute;
@@ -109,6 +112,7 @@
         display: inline-block;
         background: var(--clr-accent);
         padding: var(--spc-xs);
+        cursor: default;
     }
     /* add tape edges for heading */
     h1::before,
@@ -134,6 +138,10 @@
     /* stopwatch icon */
     .heading-icon {
         font-size: var(--fs-counter);
+    }
+    /* add shake animation to stopwatch */
+    .heading-icon:hover {
+        animation: shake .5s;
     }
 
 
@@ -243,10 +251,28 @@
     .timer-control-container span {
         font-size: var(--fs-counter);
         color: var(--clr-light);
+        transition: .3s ease;
     }
 
     /* hover effect for buttons */
     .timer-control-container span:hover {
-        color: var(--clr-accent2);
+        color: #fff;
         transition: .3s ease;
+        transform:scale(1.1);
     }
+
+
+    /* ANIMATION */
+    @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+      }
