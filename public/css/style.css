@@ -13,7 +13,7 @@
 /* PRESETS */
     html {
         font-size: 62.5%;
-        background-image: url('../img/bubble-bg.svg');
+
     }
     body {
         font-size: 1.5rem;
@@ -69,6 +69,7 @@
         --clr-light: #E8E8E8;
         --clr-dark: #212121;
         --clr-accent: #A3511A;
+        --clr-accent2: #97A588;
         --clr-ribbon-light: rgb(204, 204, 204);
         --clr-ribbon-dark: rgb(158, 172, 161);
     }
@@ -85,12 +86,10 @@
         max-width: 700px;
         height: calc(100% - (var(--spc-lg) * 3) - var(--fs-counter));
         background: rgba(255, 255, 255, .75);
-        border: 5px dashed var(--clr-accent);
+        border: 5px dashed var(--clr-light);
         border-radius: 5rem;
         position: absolute;
         top: calc(var(--fs-counter) + var(--spc-lg));
-        /* bottom: calc(var(--spc-lg) + 3%); */
-        
         z-index: -2;
         left: 50%;
         transform: translateX(-50%);
@@ -101,26 +100,25 @@
         margin-top: var(--spc-md);
         font-family: var(--ff-heading);
         font-size: var(--fs-h1);
-        color: var(--clr-accent);
+        color: var(--clr-light);
         text-align: center;
     }
 
     h1 {
         position: relative;
         display: inline-block;
-        background: var(--clr-light);
+        background: var(--clr-accent);
         padding: var(--spc-xs);
     }
-    /* add ribbon */
+    /* add tape edges for heading */
     h1::before,
     h1::after {
-
         content: '';
         position: absolute;
         top: 0;
         height: 100%;
         width: var(--spc-xs);
-        background: linear-gradient(-135deg, var(--clr-light) 8px, transparent 0) 0 8px, linear-gradient(320deg, var(--clr-light) 5px, transparent 0);
+        background: linear-gradient(-135deg, var(--clr-accent) 8px, transparent 0) 0 8px, linear-gradient(320deg, var(--clr-accent) 5px, transparent 0);
         background-position: left bottom;
         background-repeat: repeat-y;
         background-size: var(--spc-xs) var(--spc-xs);
@@ -206,17 +204,49 @@
 
     /* timer control container */
     .timer-control-container {
+        
         margin-top: var(--spc-md);
         display: flex;
         justify-content: center;
-        gap: var(--spc-sm);
+        gap: var(--spc-lg);
     }
-    .timer-control-container button {
-        width: var(--btn-width);
-        border: 5px solid var(--clr-accent);
-        border-radius: var(--fs-h1);
+
+    .timer-control-container button { 
+        position: relative;
+        background: var(--clr-accent);
+        border: none;
         cursor: pointer;
     }
+    
+    /* add tape edges to buttons */
+    .timer-control-container button::before,
+    .timer-control-container button::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: var(--spc-xs);
+
+        background: linear-gradient(-135deg, var(--clr-accent) 7px, transparent 0) 0 7px, linear-gradient(320deg, var(--clr-accent) 5px, transparent 0);
+        background-position: left bottom;
+        background-repeat: repeat-y;
+        background-size: var(--spc-xs) var(--spc-xs);
+    }
+    .timer-control-container button::before {
+        transform: translateX(calc(0% - var(--spc-xs)));
+    }      
+    .timer-control-container button::after {
+        transform: scaleX(-1);
+    }
+
+    /* button font size and color */
     .timer-control-container span {
         font-size: var(--fs-counter);
+        color: var(--clr-light);
+    }
+
+    /* hover effect for buttons */
+    .timer-control-container span:hover {
+        color: var(--clr-accent2);
+        transition: .3s ease;
     }
