@@ -1,5 +1,5 @@
 /* FONTS */
-    @import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Kanit&family=Material+Symbols+Outlined&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&family=Kanit&family=Nunito&family=Material+Symbols+Outlined&display=swap');
 
 
 /* RESETS */
@@ -59,12 +59,13 @@
         --btn-width: 16rem;
 
         /* font family */
-        --ff-body: sans-serif;
+        --ff-body: 'Nunito', sans-serif;
         --ff-heading: 'ADLaM Display', serif;
         --ff-timer: 'Kanit', sans-serif;
 
         /* font size */
         --fs-h1: 2rem;
+        --fs-h2: 1.8rem;
         --fs-body: 1.5rem;
         --fs-counter: 8rem;
 
@@ -72,7 +73,8 @@
         --clr-light: #E8E8E8;
         --clr-dark: #212121;
         --clr-accent: #A3511A;
-        --clr-accent2: #97A588;
+        --clr-accent2: #627051;
+        --clr-accent3: #DDE2D5;
         --clr-ribbon-light: rgb(204, 204, 204);
         --clr-ribbon-dark: rgb(158, 172, 161);
     }
@@ -88,9 +90,10 @@
         width: 80%;
         max-width: 700px;
         height: calc(100% - (var(--spc-lg) * 3) - var(--fs-counter));
-        /* background: rgba(255, 255, 255, 1); */
-        border: 5px dashed var(--clr-light);
-        border-radius: 5rem;
+        background: var(--clr-light);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, .1);
+        /* border: 5px dashed var(--clr-light); */
+        /* border-radius: 5rem; */
         position: absolute;
         top: calc(var(--fs-counter) + var(--spc-lg));
         z-index: -2;
@@ -132,7 +135,7 @@
     }      
     h1::after {
         right: calc(0px - var(--spc-xs));
-        transform: rotate(180deg) 
+        transform: rotate(180deg);
     } 
     
     /* stopwatch icon */
@@ -142,6 +145,7 @@
     /* add shake animation to stopwatch */
     .heading-icon:hover {
         animation: shake .5s;
+        animation-iteration-count: infinite;
     }
 
 
@@ -208,11 +212,85 @@
     .timer-display {
         max-height: 0;
         font-size: var(--fs-counter);
+        cursor: default;
+    }
+
+    /* timer setting container */
+    .timer-setting-container {
+        margin: var(--spc-lg) auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: var(--clr-dark);
+        max-width: 750px;
+    }
+    .timer-setting-container h2 {
+        padding-bottom: var(--spc-sm);
+        font-size: var(--fs-h1);
+        font-family: var(--ff-body);
+
+    }
+
+    .timer-interval-header {
+        display: flex;
+        justify-content: center;
+    }
+    .interval-header-content {
+        width: 80%;
+        max-width: 700px;
+        background: gray;
+    }
+    /* container for time intervals inside setting container */
+    .timer-interval-container {
+        display: flex;
+        gap: var(--spc-xs);
+    }
+
+    /* interval buttons */
+    .interval-btn,
+    .interval-custom {
+        font-size: var(--fs-h1);
+        font-family: var(--ff-timer);
+        padding: var(--spc-xs);
+        color: var(--clr-dark);
+        background: var(--clr-light);
+        border: 3px solid var(--clr-accent);
+        border-radius: 3rem;
+        cursor: pointer;
+    }
+    .interval-btn:hover {
+        /* color: var(--clr-light); */
+        background: var(--clr-accent3);
+        /* border: 3px solid var(--clr-dark); */
+    }
+    .interval-custom {
+        text-align: center;
+    }
+    .min-input {
+        max-width: 2.8rem;
+        cursor: text;
+        border: none;
+        border-bottom: 1px solid var(--clr-dark);
+        background: none;
+        font-size: var(--fs-h1);
+        font-family: var(--ff-timer);
+
+    }
+    .min-input:focus {
+        outline: none;
+    }
+
+    input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+    .invalid-input {
+        color: red;
     }
 
     /* timer control container */
     .timer-control-container {
-        
         margin-top: var(--spc-md);
         display: flex;
         justify-content: center;
@@ -245,21 +323,25 @@
     }      
     .timer-control-container button::after {
         transform: scaleX(-1);
+        transform: rotate(180deg);
     }
 
     /* button font size and color */
     .timer-control-container span {
         font-size: var(--fs-counter);
         color: var(--clr-light);
-        transition: .3s ease;
+        transition: all .3s ease-in-out;
     }
 
     /* hover effect for buttons */
     .timer-control-container span:hover {
         color: #fff;
-        transition: .3s ease;
-        transform:scale(1.1);
+        transform: rotate(122deg) ;
     }
+
+
+    /* MEDIA QUERIES */
+
 
 
     /* ANIMATION */
